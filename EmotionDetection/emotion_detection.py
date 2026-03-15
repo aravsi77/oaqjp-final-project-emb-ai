@@ -9,6 +9,12 @@ def emotion_detector(text_to_analyze):
     input =  { "raw_document": { "text": text_to_analyze } }
     #send the request to ibm Watson and get the response
     response = requests.post(url, json = input, headers = header)
+    #check the status code
+    status_code = response.status_code
+    #check status code 400 (empty string)
+    if status_code == 400:
+        empty_dict = {'anger':None,'disgust':None,'fear':None,'joy':None,'sadness':None,'dominant_emotion':None}
+        return empty_dict
     #format the response to text
     formatted_response = json.loads(response.text)
     #get only the emotion response and store them in a dictionary
