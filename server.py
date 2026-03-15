@@ -12,7 +12,11 @@ def sent_detector():
     #check if dictionary contains none
     if resp['anger'] is None:
         return "Invalid text! Please try again"
-    return f"For the given statement, the system response is 'anger': {resp['anger']}, 'disgust': {resp['disgust']}, 'fear': {resp['fear']}, 'joy': {resp['joy']}, 'sadness': {resp['sadness']}. The dominant emotion is {resp['dominant_emotion']}."
+    return (
+        f"For the given statement, the system response is 'anger': {resp['anger']}, "
+        f"'disgust': {resp['disgust']}, 'fear': {resp['fear']}, 'joy': {resp['joy']}, "
+        f"'sadness': {resp['sadness']}. The dominant emotion is {resp['dominant_emotion']}."
+    )
 
 @app.route("/")
 def render_index_page():
