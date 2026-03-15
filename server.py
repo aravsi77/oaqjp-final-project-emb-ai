@@ -1,13 +1,12 @@
-# Import Flask, render_template, request from the flask pramework package
+'''This module run the server'''
 from flask import Flask, render_template, request
-# Import the emotion detector function from the package created:
 from EmotionDetection.emotion_detection import emotion_detector
 #Initiate the flask app
 app = Flask("Emotion Detector")
 
 @app.route('/emotionDetector')
 def sent_detector():
-    #capture the text from html file
+    '''capture the text from html file'''
     text_to_analyze = request.args.get('textToAnalyze')
     resp = emotion_detector(text_to_analyze)
     #check if dictionary contains none
@@ -17,7 +16,7 @@ def sent_detector():
 
 @app.route("/")
 def render_index_page():
-    #render static index html
+    '''render static index html'''
     return render_template('index.html')
 
 
